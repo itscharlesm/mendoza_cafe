@@ -96,7 +96,7 @@
                                     <div class="timeline">
                                         <div class="time-label">
                                             <span class="bg-info"><i class="fa fa-bullhorn"></i> Announcements</span>
-                                            @if (session('usr_type') == '1')
+                                            @if (session('ADMIN') == '1' || session('OWNER') == '1' || session('MANAGER') == '1')
                                                 <a class="btn btn-primary float-right" href="javascript:void(0)"
                                                     data-toggle="modal" data-target="#newAnnouncementModal"><i
                                                         class="fa fa-comment"></i> Compose</a>
@@ -106,9 +106,6 @@
                                             <div>
                                                 <i class="fas fa-newspaper bg-blue"></i>
                                                 <div class="timeline-item">
-                                                    {{-- <span class="time"><i class="fas fa-clock"></i>
-                                            {{ \Carbon\Carbon::parse($announcement->ann_date_created)->diffForHumans()
-                                            }}</span> --}}
                                                     <h3 class="timeline-header">Announcement</h3>
                                                     <div class="timeline-body">
                                                         <p>No announcement yet!</p>
@@ -140,7 +137,7 @@
                                                             @endif
                                                         </div>
                                                         <div class="timeline-footer">
-                                                            @if (session('usr_type') == '1')
+                                                            @if (session('ADMIN') == '1' || session('OWNER') == '1' || session('MANAGER') == '1')
                                                                 <a class="btn btn-danger btn-sm"
                                                                     href="{{ action('App\Http\Controllers\AnnouncementController@delete', [$announcement->ann_uuid]) }}"><i
                                                                         class="fa fa-trash"></i> Delete</a>
@@ -215,16 +212,17 @@
                         <div class="form-group">
                             <label for="ann_title">Title <span style="color:red;">*</span></label>
                             <input type="text" class="form-control" id="ann_title" name="ann_title"
-                                placeholder="Title" required />
+                                placeholder="Title" required/>
                         </div>
                         <div class="form-group">
                             <label for="ann_content">Message Content <span style="color:red;">*</span></label>
-                            <textarea class="form-control" id="ann_content" name="ann_content" rows="4"></textarea>
+                            <textarea class="form-control" id="ann_content" name="ann_content" rows="4" required></textarea>
                         </div>
                         <div class="form-group">
                             <div class="custom-file">
                                 <label for="ann_image">Image</label>
-                                <input type="file" class="custom-file-input" id="customFile" name="ann_image" />
+                                <input type="file" class="custom-file-input" id="customFile" name="ann_image"
+                                    accept=".jpeg, .jpg, .png" />
                                 <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
                             <small id="fileHelp" class="form-text text-muted">Please upload a valid image file in jpg or
@@ -240,4 +238,11 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
 @endsection

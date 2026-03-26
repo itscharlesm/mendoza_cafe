@@ -1,14 +1,37 @@
-<script src="{{ asset('plugins/bootstrap/bootstrap.min.js') }}" defer></script>
-<script src="{{ asset('plugins/slick/slick.min.js') }}"></script>
-<script src="{{ asset('plugins/slick/slick-animation.min.js') }}"></script>
-<script src="{{ asset('plugins/colorbox/jquery.colorbox.js') }}"></script>
-<script src="{{ asset('plugins/shuffle/shuffle.min.js') }}" defer></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
-<script src="{{ asset('plugins/google-map/map.js') }}" defer></script>
-<script src="{{ asset('js/script.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
+<script src="{{ asset('plugins/jQuery/jquery.min.js') }}"></script>
+<script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>
+
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
+<script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
+<script src="{{ asset('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
+<script src="{{ asset('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
+<script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+<script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+<script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.js') }}"></script>
+<script src="{{ asset('dist/js/adminlte.js') }}"></script>
+<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js"></script>
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.js') }}"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"
+    integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#RegTable').DataTable();
+    });
+</script>

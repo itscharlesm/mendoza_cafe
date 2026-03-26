@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-orange navbar-light">
+<nav class="main-header navbar navbar-expand navbar-green navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -26,10 +26,6 @@
                 <div class="dropdown-divider"></div>
                 <a href="javascipt:void(0)" data-toggle="modal" data-target="#userPasswordModal" class="dropdown-item">
                     <i class="fas fa-key mr-2"></i> Change Password
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="javascipt:void(0)" data-toggle="modal" data-target="#userInfoModal" class="dropdown-item">
-                    <i class="fas fa-edit mr-2"></i> Update Information
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="{{ action('App\Http\Controllers\LoginController@logout') }}" class="dropdown-item">

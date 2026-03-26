@@ -12,6 +12,7 @@
         {{-- @include('layouts.partials.preloader') --}}
         @include('layouts.partials.navbar')
         @include('layouts.partials.sidebar')
+        @include('layouts.partials.modals')
         <div class="content-wrapper">
             @yield('content')
             <a class="btn btn-primary back-to-top no-print" id="back-to-top" role="button" aria-label="Scroll to top"
