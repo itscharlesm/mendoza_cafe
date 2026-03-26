@@ -48,7 +48,7 @@
         @endif
         <div class="row mt-3">
             <div class="col-md-12">
-                @if(session('usr_type') == '1' || session('usr_type') == '2' || session('usr_type') == '3')
+                @if(session('usr_type') == '1' || session('usr_type') == '2' || session('usr_type') == '3' || session('usr_type') == '4')
                     @if(!$isDayDone)
                         @if($cashOnHandToday)
                             <a class="btn btn-danger float-right mb-3" href="javascript:void(0)" data-toggle="modal"
@@ -69,10 +69,13 @@
                             <th class="text-center">No</th>
                             <th class="text-center">Date</th>
                             <th class="text-center">Starting Cash</th>
-                            <th class="text-center">Added by</th>
+                            <th class="text-center">Employee</th>
                             <th class="text-center">Cash on Hand</th>
                             <th class="text-center">End of the Day Cash</th>
                             <th class="text-center">Confirmed by</th>
+                            @if(session('usr_type') == 1 || session('usr_type') == 2 || session('usr_type') == 3)
+                                <th class="text-center">Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -84,12 +87,22 @@
                                 </td>
                                 <td class="text-center align-middle">₱{{ number_format($cash->coh_starting_cash, 2) ?? 0  }}
                                 </td>
-                                <td class="text-center align-middle">{{ $cash->coh_created_by }}</td>
+                                <td class="text-center align-middle">{{ $cash->usr_first_name }} {{ $cash->usr_last_name }}</td>
                                 <td class="text-center align-middle">₱{{ number_format($cash->coh_on_hand_cash, 2) ?? 0  }}
                                 </td>
-                                <td class="text-center align-middle">₱{{ number_format($cash->coh_ending_cash, 2) ?? 0  }}
+                                <td class="text-center align-middle">
+                                    @if ($cash->coh_ending_cash === null)
+                                        N/A
+                                    @else
+                                        ₱{{ number_format($cash->coh_ending_cash, 2) }}
+                                    @endif
                                 </td>
-                                <td class="text-center align-middle">{{ $cash->coh_modified_by }}</td>
+                                <td class="text-center align-middle">
+                                    {{ $cash->usr_first_name ?? 'N/A' }} {{ $cash->usr_last_name ?? '' }}
+                                </td>
+                                @if(session('usr_type') == 1 || session('usr_type') == 2 || session('usr_type') == 3)
+                                    <td class="text-center align-middle">end</td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

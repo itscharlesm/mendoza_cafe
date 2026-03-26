@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        <title>Login | MCM EyeCafe</title>
+        <title>Login | Mendoza Cafe</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="CQA Review Center">
         <meta name="author" content="Infinit Soloutions">
-        <link rel="shortcut icon" href="{{ asset('images/accounts/icon/icon.png') }}">
+        <link rel="shortcut icon" href="{{ asset('images/logos/logo.png') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,19 +14,21 @@
     </head>
     <body>
         @include('sweetalert::alert')
+        @include('layouts.partials.alerts')
+        @include('layouts.partials.onclick')
         <section class="ftco-section">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-12 col-lg-10">
                         <div class="wrap d-md-flex">
-                            <div class="img" style="background-image: url({{ asset('images/accounts/banner/sidebanner.jpg') }});">
+                            <div class="img" style="background-image: url({{ asset('images/logos/cafe_logo.jpg') }});">
                             </div>
                             <div class="login-wrap p-4 p-md-4">
                                 <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('images/accounts/logo/logo.png') }}" class="img-circle elevation-2" style="width:80px;height:80px;" alt="">
+                                    <img src="{{ asset('images/logos/logo.png') }}" class="img-circle elevation-2" style="width:80px;height:80px;" alt="">
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <h5 class="text-center" style="color:gray;">Small Business</h5>
+                                    <h5 class="text-center" style="color:gray;">Mendoza Cafe</h5>
                                 </div>
                                 <p><small>PLEASE LOGIN YOUR ACCOUNT</small></p>
                                 @if(session('errorMessage'))

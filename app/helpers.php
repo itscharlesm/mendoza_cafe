@@ -213,8 +213,21 @@ function setUserSessionVariables($user)
     Session::put('usr_birth_date', $user->usr_birth_date);
     Session::put('usr_image_path', $user->usr_image_path);
     Session::put('usr_mobile', $user->usr_mobile);
-    Session::put('usr_type', $user->usr_type);
     Session::put('usr_full_name', $user->usr_first_name . ' ' . $user->usr_middle_name . ' ' . $user->usr_last_name);
+
+    // set role
+    $roles = DB::table('roles')->get();
+
+    foreach ($roles as $role) {
+        $user_role = DB::table('user_roles')
+            ->where('usr_id', '=', $user->usr_id)
+            ->where('rol_id', '=', $role->rol_id)
+            ->where('url_active', '=', '1')
+            ->first();
+
+        Session::put($role->rol_name, $user_role ? '1' : '0');
+    }
+
     recordLogin($user->usr_id);
 }
 

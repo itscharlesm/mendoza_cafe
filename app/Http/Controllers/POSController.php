@@ -124,6 +124,12 @@ class POSController extends Controller
     {
         // Fetch cash on hand
         $cash_on_hand = DB::table('user_cash')
+            ->join('users', 'user_cash.coh_modified_by', '=', 'users.usr_id')
+            ->select(
+                'user_cash.*',
+                'users.usr_first_name',
+                'users.usr_last_name'
+            )
             ->orderBy('coh_date_created', 'desc')
             ->get();
 
@@ -205,7 +211,7 @@ class POSController extends Controller
                     'coh_ending_cash' => $coh_ending_cash,
                     'coh_date_modified' => Carbon::now(),
                     'coh_modified_by' => session('usr_id'),
-                    'coh_active' => 0, // Optionally deactivate this entry if needed
+                    'coh_active' => 2,
                 ]);
 
             return redirect('admin/pos/cash-on-hand')->with('success', 'Ending cash has been successfully set. You did well today');

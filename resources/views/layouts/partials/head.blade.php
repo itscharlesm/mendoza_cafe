@@ -1,26 +1,19 @@
 <meta charset="utf-8">
-<title>Equipment Borrowing</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="DOST GRIND Website">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<meta name=author content="Infinit Solutions">
-
-<link rel="icon" type="image/png" href="{{ asset('images/favicon.ico') }}">
-<link rel="stylesheet" href="{{ asset('plugins/bootstrap/bootstrap.min.css') }}">
-<link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/all.min.css') }}">
-<link rel="stylesheet" href="{{ asset('plugins/animate-css/animate.css') }}">
-<link rel="stylesheet" href="{{ asset('plugins/slick/slick.css') }}">
-<link rel="stylesheet" href="{{ asset('plugins/slick/slick-theme.css') }}">
-<link rel="stylesheet" href="{{ asset('plugins/colorbox/colorbox.css') }}">
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
-<link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
-<link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-<link href="{{ asset('plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-3.1.3/dt-1.11.5/datatables.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Small Business</title>
+<link rel="icon" type="image/png" href="{{ asset('images/accounts/logo/new_logo.png') }}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('dist/css/adminlte.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/fontawesome-free-6.4.0-web/css/all.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
