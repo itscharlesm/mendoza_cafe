@@ -34,7 +34,7 @@ Route::get('home', [AdminController::class, 'home']);
 Route::get('setup', [AdminController::class, 'setup']);
 // - Announcements
 Route::post('announcement/save', [AnnouncementController::class, 'save']);
-Route::get('announcement/delete/{ann_uuid}', [AnnouncementController::class, 'delete']);
+Route::post('announcement/delete/{ann_uuid}', [AnnouncementController::class, 'delete']);
 // ------------------------------------------------------------------------------------------------------------------------------------ //
 // Transactions
 Route::get('admin/pos/new-transaction', [POSController::class, 'pos_main']);

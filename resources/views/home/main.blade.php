@@ -21,6 +21,9 @@
 
     {{-- Main Content --}}
     <section class="content">
+
+        @include('layouts.partials.onclick')
+
         @php
             // Define roles per tab (EASY TO UPDATE)
             $dashboardRoles = ['ADMIN', 'OWNER']; // can see dashboard
@@ -138,10 +141,56 @@
                                                         </div>
                                                         <div class="timeline-footer">
                                                             @if (session('ADMIN') == '1' || session('OWNER') == '1' || session('MANAGER') == '1')
-                                                                <a class="btn btn-danger btn-sm"
-                                                                    href="{{ action('App\Http\Controllers\AnnouncementController@delete', [$announcement->ann_uuid]) }}"><i
-                                                                        class="fa fa-trash"></i> Delete</a>
+                                                                @if (session('ADMIN') == '1' || session('OWNER') == '1' || session('MANAGER') == '1')
+                                                                    <a class="btn btn-danger btn-sm"
+                                                                        href="javascript:void(0)" data-toggle="modal"
+                                                                        data-target="#deleteModal-{{ $announcement->ann_uuid }}">
+                                                                        <i class="fa fa-trash"></i> Delete
+                                                                    </a>
+                                                                @endif
                                                             @endif
+                                                        </div>
+
+                                                        <!-- Delete Confirmation Modal -->
+                                                        <div class="modal fade"
+                                                            id="deleteModal-{{ $announcement->ann_uuid }}" tabindex="-1"
+                                                            role="dialog"
+                                                            aria-labelledby="deleteModalLabel-{{ $announcement->ann_uuid }}"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header bg-danger text-white">
+                                                                        <h5 class="modal-title"
+                                                                            id="deleteModalLabel-{{ $announcement->ann_uuid }}">
+                                                                            <i class="fa fa-exclamation-triangle"></i>
+                                                                            Confirm Delete
+                                                                        </h5>
+                                                                        <button type="button" class="close text-white"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Are you sure you want to delete the announcement:
+                                                                        <strong>{{ $announcement->ann_title }}</strong>?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancel</button>
+
+                                                                        <!-- Proper form for deletion -->
+                                                                        <form
+                                                                            action="{{ action('App\Http\Controllers\AnnouncementController@delete', [$announcement->ann_uuid]) }}"
+                                                                            method="POST" style="display:inline;">
+                                                                            @csrf
+                                                                            <button type="submit" class="btn btn-danger">
+                                                                                <span class="fa fa-trash"></span> Yes,
+                                                                                Delete
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -195,6 +244,7 @@
         </div>
     </section>
 
+    <!-- New Announcement Modal -->
     <div class="modal fade" id="newAnnouncementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -212,7 +262,7 @@
                         <div class="form-group">
                             <label for="ann_title">Title <span style="color:red;">*</span></label>
                             <input type="text" class="form-control" id="ann_title" name="ann_title"
-                                placeholder="Title" required/>
+                                placeholder="Title" required />
                         </div>
                         <div class="form-group">
                             <label for="ann_content">Message Content <span style="color:red;">*</span></label>
