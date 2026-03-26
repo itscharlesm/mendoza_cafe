@@ -64,6 +64,20 @@ Route::post('pos/damages/create-new/add', [POSController::class, 'pos_damages_ad
 
 // - Attendances
 
+// - Leave Applications
+
+// - Violations
+
+// - Payroll
+
+// - Accounting Payroll
+
+// ------------------------------------------------------------------------------------------------------------------------------------ //
+// ACCOUNTS
+// - Information
+
+// - Setup
+
 // ------------------------------------------------------------------------------------------------------------------------------------ //
 // LARAVEL COMMANDS //
 Route::get('/laravel/clear-all', function () {

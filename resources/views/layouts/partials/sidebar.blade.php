@@ -145,11 +145,13 @@
                     </a>
 
                     <ul class="nav nav-treeview">
-                        <a href="{{ action('App\Http\Controllers\AdminController@setup') }}"
-                            class="nav-link {{ request()->is('admin/setup') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>EMPLOYEES</p>
-                        </a>
+                        @if (session('ADMIN') == '1' || session('OWNER') == '1' || session('MANAGER') == '1' || session('HRIS_MANAGER') == '1')
+                            <a href="{{ action('App\Http\Controllers\AdminController@setup') }}"
+                                class="nav-link {{ request()->is('admin/setup') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>EMPLOYEES</p>
+                            </a>
+                        @endif
                         <li class="nav-item {{ request()->is('admin/setup*') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link {{ request()->is('admin/setup*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
@@ -166,13 +168,15 @@
                                         <p>MY DTR</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ action('App\Http\Controllers\AdminController@setup') }}"
-                                        class="nav-link {{ request()->is('admin/setup') ? 'active' : '' }}">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>EMPLOYEES DTR</p>
-                                    </a>
-                                </li>
+                                @if (session('ADMIN') == '1' || session('OWNER') == '1' || session('MANAGER') == '1' || session('HRIS_MANAGER') == '1')
+                                    <li class="nav-item">
+                                        <a href="{{ action('App\Http\Controllers\AdminController@setup') }}"
+                                            class="nav-link {{ request()->is('admin/setup') ? 'active' : '' }}">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>EMPLOYEES DTR</p>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </li>
 
@@ -206,13 +210,15 @@
                                         <p>LEAVE CREDITS</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ action('App\Http\Controllers\AdminController@setup') }}"
-                                        class="nav-link {{ request()->is('admin/setup') ? 'active' : '' }}">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>EMPLOYEES LEAVE</p>
-                                    </a>
-                                </li>
+                                @if (session('ADMIN') == '1' || session('OWNER') == '1' || session('MANAGER') == '1' || session('HRIS_MANAGER') == '1')
+                                    <li class="nav-item">
+                                        <a href="{{ action('App\Http\Controllers\AdminController@setup') }}"
+                                            class="nav-link {{ request()->is('admin/setup') ? 'active' : '' }}">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>EMPLOYEES LEAVE</p>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </li>
 
@@ -232,13 +238,15 @@
                                         <p>MY VIOLATIONS</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ action('App\Http\Controllers\AdminController@setup') }}"
-                                        class="nav-link {{ request()->is('admin/setup') ? 'active' : '' }}">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>EMPLOYEES VIOLATIONS</p>
-                                    </a>
-                                </li>
+                                @if (session('ADMIN') == '1' || session('OWNER') == '1' || session('MANAGER') == '1' || session('HRIS_MANAGER') == '1')
+                                    <li class="nav-item">
+                                        <a href="{{ action('App\Http\Controllers\AdminController@setup') }}"
+                                            class="nav-link {{ request()->is('admin/setup') ? 'active' : '' }}">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>EMPLOYEES VIOLATIONS</p>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </li>
                     </ul>
@@ -280,24 +288,27 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item {{ request()->is('admin/setup*') ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link {{ request()->is('admin/setup*') ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    ACCOUNTING PAYROLL
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ action('App\Http\Controllers\AdminController@setup') }}"
-                                        class="nav-link {{ request()->is('admin/setup') ? 'active' : '' }}">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>EMPLOYEES PAYROLL</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        @if (session('ADMIN') == '1' || session('OWNER') == '1' || session('MANAGER') == '1' || session('HRIS_MANAGER') == '1')
+                            <li class="nav-item {{ request()->is('admin/setup*') ? 'menu-open' : '' }}">
+                                <a href="#"
+                                    class="nav-link {{ request()->is('admin/setup*') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        ACCOUNTING PAYROLL
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ action('App\Http\Controllers\AdminController@setup') }}"
+                                            class="nav-link {{ request()->is('admin/setup') ? 'active' : '' }}">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>EMPLOYEES PAYROLL</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
                     </ul>
                 </li>
 
