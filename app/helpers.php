@@ -215,7 +215,19 @@ function setUserSessionVariables($user)
     Session::put('usr_mobile', $user->usr_mobile);
     Session::put('usr_full_name', $user->usr_first_name . ' ' . $user->usr_middle_name . ' ' . $user->usr_last_name);
 
-    // set role
+    // 👉 Get highest role (LOWEST rol_id = highest priority)
+    $highestRole = DB::table('user_roles as ur')
+        ->join('roles as r', 'ur.rol_id', '=', 'r.rol_id')
+        ->where('ur.usr_id', $user->usr_id)
+        ->where('ur.url_active', '1')
+        ->orderBy('r.rol_id', 'ASC') // change if using priority column
+        ->select('r.rol_name')
+        ->first();
+
+    // Store highest role name
+    Session::put('role_name', $highestRole ? $highestRole->rol_name : 'No Role');
+
+    // (Optional) still keep your role flags
     $roles = DB::table('roles')->get();
 
     foreach ($roles as $role) {

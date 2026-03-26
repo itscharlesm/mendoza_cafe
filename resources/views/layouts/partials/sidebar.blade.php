@@ -3,20 +3,26 @@
     <a href="" class="brand-link">
         <img src="{{ asset('images/logos/logo.png') }}" alt="Mendoza Cafe logo" class="brand-image text-center"
             style="width:35px;height:35px;">
-        <span class="brand-text font-weight-light">&nbsp;</span>
+        <span class="brand-text font-weight-light">MENDOZA CAFE</span>
     </a>
 
     {{-- Sidebar --}}
     <div class="sidebar">
         {{-- Sidebar user panel --}}
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ asset(getAvatar(session('usr_id'))) }}" class="img-circle elevation-2" alt="User Image">
+        <div class="user-panel d-flex align-items-center py-2">
+            <div class="image me-2">
+                <img src="{{ asset(getAvatar(session('usr_id'))) }}"
+                    class="img-circle elevation-2"
+                    alt="User Image"
+                    style="width:40px; height:40px;">
             </div>
-            <div class="info">
-                <a href="javascipt:void(0)" class="d-block">{{ session('usr_first_name') }}</a>
-                <span class="brand-text font-weight-light"
-                    style="color:gray;"><small>{{ session('acc_name') }}</small></span>
+            <div class="info p-2">
+                <a href="javascript:void(0)" class="d-block mb-0 fw-semibold">
+                    {{ session('usr_first_name') }}
+                </a>
+                <small class="text-muted d-block" style="line-height:1;">
+                    {{ session('role_name') }}
+                </small>
             </div>
         </div>
 
