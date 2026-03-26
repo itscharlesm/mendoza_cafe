@@ -25,6 +25,6 @@ class AdminController extends Controller
             ->limit(6)
             ->get();
 
-        return view('admin.dashboard.main', compact('logins', 'announcements'));
+        return view('home.main', compact('logins', 'announcements'));
     }
 }

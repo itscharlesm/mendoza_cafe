@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-orange elevation-4">
     {{-- Brand Logo --}}
     <a href="" class="brand-link">
-        <img src="{{ asset('images/sms-logo2.png') }}" alt="Infinit logo" class="brand-image text-center"
-            style="width:100px;height:100px;">
+        <img src="{{ asset('images/logos/logo.png') }}" alt="Mendoza Cafe logo" class="brand-image text-center"
+            style="width:40px;height:100px;">
         <span class="brand-text font-weight-light">&nbsp;</span>
     </a>
 
@@ -22,54 +22,83 @@
 
         {{-- * Sidebar Menu --}}
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
 
                 {{-- Home --}}
-                <li class="nav-item">
-                    <a href="{{ action('App\Http\Controllers\AdminController@home') }}"
-                        class="nav-link {{ request()->is('admin/home') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-home"></i>
-                        <p>Home</p>
-                    </a>
-                </li>
+                @if (session('ADMIN') == '1' ||
+                        session('OWNER') == '1' ||
+                        session('MANAGER') == '1' ||
+                        session('BILLING_SUPERVISOR') == '1' ||
+                        session('BILLING') == '1' ||
+                        session('CASHIER_SUPERVISOR') == '1' ||
+                        session('CASHIER') == '1' ||
+                        session('HRIS_MANAGER') == '1' ||
+                        session('EMPLOYEE') == '1')
+                    <li class="nav-item">
+                        <a href="{{ action('App\Http\Controllers\AdminController@home') }}"
+                            class="nav-link {{ request()->is('home') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Home</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="" class="nav-link ">
+                            <i class="nav-icon fas fa-comments"></i>
+                            <p>Messages</p>
+                        </a>
+                    </li>
+                @endif
 
                 {{-- Point of Sale --}}
-                <li class="nav-item {{ request()->is('admin/pos/*') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ request()->is('admin/pos/*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-cart-plus"></i>
-                        <p>
-                            Transactions
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ action('App\Http\Controllers\POSController@pos_main') }}"
-                                class="nav-link {{ request()->is('admin/pos/new-transaction') ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Point of Sale</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ action('App\Http\Controllers\POSController@transaction_history') }}"
-                                class="nav-link {{ request()->is('admin/pos/transactions') ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Transaction History</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ action('App\Http\Controllers\POSController@cash_on_hand') }}"
-                                class="nav-link {{ request()->is('admin/pos/cash-on-hand') ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Cash Management</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                @if (session('ADMIN') == '1' ||
+                        session('OWNER') == '1' ||
+                        session('MANAGER') == '1' ||
+                        session('BILLING_SUPERVISOR') == '1' ||
+                        session('BILLING') == '1' ||
+                        session('CASHIER_SUPERVISOR') == '1' ||
+                        session('CASHIER') == '1' ||
+                        session('HRIS_MANAGER') == '1' ||
+                        session('EMPLOYEE') == '1')
+                    <li class="nav-header">Point of Sale</li>
+
+                    <li class="nav-item {{ request()->is('admin/pos/*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->is('admin/pos/*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-cart-plus"></i>
+                            <p>
+                                Transactions
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ action('App\Http\Controllers\POSController@pos_main') }}"
+                                    class="nav-link {{ request()->is('admin/pos/new-transaction') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Point of Sale</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ action('App\Http\Controllers\POSController@transaction_history') }}"
+                                    class="nav-link {{ request()->is('admin/pos/transactions') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Transaction History</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ action('App\Http\Controllers\POSController@cash_on_hand') }}"
+                                    class="nav-link {{ request()->is('admin/pos/cash-on-hand') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Cash Management</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
 
                 {{-- Management --}}
                 <li class="nav-header">Management</li>
-
                 <li class="nav-item {{ request()->is('admin/utility*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ request()->is('admin/utility*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-list"></i>
@@ -87,13 +116,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link {{ request()->is('admin/utility/categories') ? 'active' : '' }}">
+                            <a href=""
+                                class="nav-link {{ request()->is('admin/utility/categories') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Menu</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link {{ request()->is('admin/utility/clients') ? 'active' : '' }}">
+                            <a href=""
+                                class="nav-link {{ request()->is('admin/utility/clients') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Inventory</p>
                             </a>

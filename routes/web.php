@@ -62,8 +62,8 @@ Route::post('announcement/save', [AnnouncementController::class, 'save']);
 Route::get('announcement/delete/{ann_uuid}', [AnnouncementController::class, 'delete']);
 
 // Admin
-Route::get('admin/home', [AdminController::class, 'home']);
-Route::get('admin/setup', [AdminController::class, 'setup']);
+Route::get('home', [AdminController::class, 'home']);
+Route::get('setup', [AdminController::class, 'setup']);
 
 // Transactions
 Route::get('admin/pos/new-transaction', [POSController::class, 'pos_main']);
@@ -87,3 +87,20 @@ Route::post('pos/purchase/new-transaction/add', [POSController::class, 'pos_purc
 // ? DAMAGE
 Route::get('pos/damages/create-new', [POSController::class, 'pos_damages_main']);
 Route::post('pos/damages/create-new/add', [POSController::class, 'pos_damages_add']);
+
+// LARAVEL COMMANDS //
+Route::get('/laravel/clear-all', function () {
+    $commands = [
+        'cache:clear',
+        'view:clear',
+        'route:clear',
+        'config:clear',
+        'config:cache',
+    ];
+
+    foreach ($commands as $command) {
+        Artisan::call($command);
+    }
+
+    return response()->json(['message' => 'All caches and configurations cleared successfully!']);
+});
