@@ -30,8 +30,42 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        // Initialize Select2 on all .select3 elements
+        $('.select3').each(function() {
+            $(this).select2({
+                dropdownParent: $(this).closest(
+                    '.modal') // Ensure dropdown is within the correct modal
+            });
+        });
+
+        // Reinitialize Select2 when any modal is opened
+        $('.modal').on('shown.bs.modal', function() {
+            $(this).find('.select3').each(function() {
+                $(this).select2({
+                    dropdownParent: $(this).closest(
+                        '.modal') // Attach dropdown to its modal
+                });
+            });
+        });
+    });
+</script>
+
 <script>
     $(document).ready(function() {
         $('#RegTable').DataTable();
     });
 </script>
+
+<!-- Select 2 - Modal -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

@@ -11,9 +11,7 @@
         {{-- Sidebar user panel --}}
         <div class="user-panel d-flex align-items-center py-2">
             <div class="image me-2">
-                <img src="{{ asset(getAvatar(session('usr_id'))) }}"
-                    class="img-circle elevation-2"
-                    alt="User Image"
+                <img src="{{ asset(getAvatar(session('usr_id'))) }}" class="img-circle elevation-2" alt="User Image"
                     style="width:40px; height:40px;">
             </div>
             <div class="info p-2">
@@ -50,7 +48,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="" class="nav-link ">
+                        <a href="{{ action('App\Http\Controllers\MessageController@main') }}"
+                            class="nav-link  {{ request()->is('messages*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-comments"></i>
                             <p>MESSAGES</p>
                         </a>
